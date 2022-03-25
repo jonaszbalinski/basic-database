@@ -35,6 +35,7 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonModify = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox
@@ -46,6 +47,7 @@
             this.listBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBox.Size = new System.Drawing.Size(396, 388);
             this.listBox.TabIndex = 0;
+            this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // textBoxName
             // 
@@ -81,7 +83,7 @@
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(674, 328);
+            this.buttonApply.Location = new System.Drawing.Point(688, 328);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(75, 34);
             this.buttonApply.TabIndex = 5;
@@ -91,7 +93,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(544, 328);
+            this.buttonDelete.Location = new System.Drawing.Point(498, 328);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 34);
             this.buttonDelete.TabIndex = 6;
@@ -99,11 +101,23 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // buttonModify
+            // 
+            this.buttonModify.Enabled = false;
+            this.buttonModify.Location = new System.Drawing.Point(593, 328);
+            this.buttonModify.Name = "buttonModify";
+            this.buttonModify.Size = new System.Drawing.Size(75, 34);
+            this.buttonModify.TabIndex = 7;
+            this.buttonModify.Text = "Modify";
+            this.buttonModify.UseVisualStyleBackColor = true;
+            this.buttonModify.Click += new System.EventHandler(this.buttonModify_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonModify);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.labelDate);
@@ -127,6 +141,7 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonModify;
     }
 }
 

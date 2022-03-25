@@ -49,10 +49,11 @@ namespace database
 
                 textBoxName.Text = "";
                 textBoxDate.Text = "";
+                buttonModify.Enabled = false;
             }
             else
             {
-                MessageBox.Show("Invalid date format.", "Date error");
+                MessageBox.Show("Invalid date format or empty name.", "Error");
             }
         }
 
@@ -72,6 +73,58 @@ namespace database
 
                 dt.SubmitChanges();
                 LoadToListBox();
+                buttonModify.Enabled = false;
+                textBoxName.Text = "";
+                textBoxDate.Text = "";
+            }
+        }
+
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBox.SelectedItems.Count == 1)
+            {
+                buttonModify.Enabled = true;
+                if (listBox.SelectedItem is PERSON)
+                {
+                    textBoxName.Text = ((PERSON)listBox.SelectedItem).name;
+                    textBoxDate.Text = ((PERSON)listBox.SelectedItem).date.ToShortDateString();
+                }
+
+            }
+            else
+            {
+                buttonModify.Enabled = false;
+                textBoxName.Text = "";
+                textBoxDate.Text = "";
+            }
+        }
+
+        private void buttonModify_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItems.Count == 1)
+            {
+                if (listBox.SelectedItem is PERSON)
+                {
+                    DateTime date;
+                    if (textBoxName.Text != "" && DateTime.TryParse(textBoxDate.Text, out date))
+                    {
+                        ((PERSON)listBox.SelectedItem).name = textBoxName.Text;
+                        ((PERSON)listBox.SelectedItem).date = date;
+
+                        dt.SubmitChanges();
+                        LoadToListBox();
+
+                        textBoxName.Text = "";
+                        textBoxDate.Text = "";
+                        buttonModify.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid date format or empty name.", "Error");
+                    }
+
+
+                }
             }
         }
     }
