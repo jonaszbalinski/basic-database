@@ -36,7 +36,8 @@ namespace database
         private void buttonApply_Click(object sender, EventArgs e)
         {
             DateTime date;
-            if(textBoxName.Text != "" && DateTime.TryParse(textBoxDate.Text, out date))
+            if(textBoxName.Text != "" && textBoxName.Text.Length < 50 && 
+                DateTime.TryParse(textBoxDate.Text, out date))
             {
                 PERSON p = new PERSON();
                 p.name = textBoxName.Text;
@@ -53,7 +54,7 @@ namespace database
             }
             else
             {
-                MessageBox.Show("Invalid date format or empty name.", "Error");
+                MessageBox.Show("Invalid date format/name.", "Error");
             }
         }
 
@@ -106,7 +107,8 @@ namespace database
                 if (listBox.SelectedItem is PERSON)
                 {
                     DateTime date;
-                    if (textBoxName.Text != "" && DateTime.TryParse(textBoxDate.Text, out date))
+                    if (textBoxName.Text != "" && textBoxName.Text.Length < 50 && 
+                        DateTime.TryParse(textBoxDate.Text, out date))
                     {
                         ((PERSON)listBox.SelectedItem).name = textBoxName.Text;
                         ((PERSON)listBox.SelectedItem).date = date;
@@ -120,7 +122,7 @@ namespace database
                     }
                     else
                     {
-                        MessageBox.Show("Invalid date format or empty name.", "Error");
+                        MessageBox.Show("Invalid date format/name.", "Error");
                     }
 
 
